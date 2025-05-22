@@ -1,19 +1,25 @@
+using CursorsDesktop.ViewModels;
+using CursorsDesktop.Views;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using CursorsDesktop.ViewModels;
-using CursorsDesktop.Views;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using System.Windows;
+using CursorsDesktop.Data;
 
 namespace CursorsDesktop
 {
     public partial class App : Application
     {
+
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
+            DatabaseFacade facade = new DatabaseFacade(new ApplicationDbContext());
+            facade.EnsureCreated();
         }
 
         public override void OnFrameworkInitializationCompleted()
