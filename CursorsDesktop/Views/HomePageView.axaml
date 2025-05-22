@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CursorsDesktop.Views.HomePageView">
+	<Grid Background="White">
+		<Button Background="#ff8624" BorderBrush="Black" CornerRadius="0 10 10 0" Width="50" Height="32" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="299,10,0,0">
+			<PathIcon Data="{StaticResource SearchRegular}"/>
+		</Button>
+
+		<TextBox Watermark="Search..." Background="White" BorderBrush="Black" Foreground="Black" CornerRadius="10 0 0 10" Width="250" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"></TextBox>
+		<Grid.Styles>
+			<Style Selector="Button:pointerover /template/ ContentPresenter">
+				<Setter Property="Background" Value="#df7925"/>
+			</Style>
+			<Style Selector="TextBox:pointerover /template/ Border">
+				<Setter Property="BorderBrush" Value="Black"/>
+				<Setter Property="CornerRadius" Value="10 0 0 10"/>
+				<Setter Property="Background" Value="White"/>
+			</Style>
+			<Style Selector="TextBox:focus /template/ Border">
+				<Setter Property="BorderBrush" Value="Blue"/>
+				<Setter Property="CornerRadius" Value="10 0 0 10"/>
+				<Setter Property="Background" Value="White"/>
+			</Style>
+		</Grid.Styles>
+	</Grid>
+</UserControl>

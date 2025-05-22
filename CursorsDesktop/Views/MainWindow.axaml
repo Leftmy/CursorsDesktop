@@ -1,0 +1,65 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CursorsDesktop.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="CursorsDesktop.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="CursorsDesktop">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<SplitView IsPaneOpen="{Binding IsPaneOpen}"
+			   OpenPaneLength="150"
+			   DisplayMode="CompactInline"
+			   CompactPaneLength="52"
+			   PaneBackground="#ff8624"
+			   Background="#ff8624">
+		<SplitView.Pane>
+			<StackPanel
+				Spacing="5"
+				Margin="5 20 5 0">
+				<TextBlock FontFamily="{StaticResource InterBold}">Senior Cursor</TextBlock>
+				<ListBox
+						Background="White"
+						ItemsSource="{Binding Items}"
+						SelectedItem="{Binding SelectedListItem}"
+						Foreground="#ff8624"
+						FontFamily="{StaticResource InterBold}"
+						FontSize="18">
+
+					<ListBox.ItemTemplate>
+						<DataTemplate DataType="{x:Type vm:ListItemTemplate}">
+							<StackPanel Spacing="10" Orientation="Horizontal">
+								<PathIcon Foreground="#ff8624" Data="{Binding ListItemIcon}"/>
+								<TextBlock Text="{Binding Label}"></TextBlock>
+							</StackPanel>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+					<ListBox.Styles>
+						<Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+							<Setter Property="Foreground" Value="#ff8624"/>
+							<Setter Property="Background" Value="#e4e4e4"/>
+						</Style>
+						<Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+							<Setter Property="Background" Value="#e4e4e4"/>
+						</Style>
+					</ListBox.Styles>
+				</ListBox>
+
+			</StackPanel>
+		</SplitView.Pane>
+		<SplitView.Content>
+			<Border CornerRadius="5 0 0 0"
+					Background="White"
+					>
+				<TransitioningContentControl Content="{Binding CurrentPage}"/>
+			</Border>
+		</SplitView.Content>
+	</SplitView>
+
+</Window>

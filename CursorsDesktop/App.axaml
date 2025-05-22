@@ -1,0 +1,25 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="CursorsDesktop.App"
+             xmlns:local="using:CursorsDesktop"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+  
+    <Application.Styles>
+        <FluentTheme />
+		<StyleInclude Source="avares://CursorsDesktop/Assets/icons.axaml"/>
+    </Application.Styles>
+
+	<Application.Resources>
+		<FontFamily x:Key="InterRegular">
+			avares://CursorsDesktop/Assets/Fonts/Inter_28pt-Regular.ttf#Inter 28pt
+		</FontFamily>
+		<FontFamily x:Key="InterBold">
+			avares://CursorsDesktop/Assets/Fonts/Inter_28pt-Bold.ttf#Inter 28pt
+		</FontFamily>
+	</Application.Resources>
+</Application>
