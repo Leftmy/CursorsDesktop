@@ -26,7 +26,7 @@ namespace CursorsDesktop.Services
                
         }
 
-        public static void setCursor(int cursorId)
+        public void setCursor(int cursorId)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
@@ -45,6 +45,48 @@ namespace CursorsDesktop.Services
                 }
             }
                 
+        }
+        public void AddCursor(string name, int cursorTypeId/*, CursorType cursorType*/, int packageId/*, Package package*/, string path)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+
+                Cursor cursor =
+                    new Cursor()
+                    {
+                        CursorName = name,
+                        CursorTypeId = cursorTypeId,
+                        CursorType = db.CursorTypes.Find(cursorTypeId),
+                        PackageId = packageId,
+                        Package = db.Packages.Find(packageId),
+                        CursorPath = path
+                    };
+
+                db.Cursors.Add(
+                    cursor
+                );
+
+                db.SaveChanges();
+                CursorType foundType = db.CursorTypes.Find(cursorTypeId);
+                foundType.CursorIds.Add(cursor.CursorId);
+                Package foundPackage = db.Packages.Find(packageId);
+                foundPackage.CursorIds.Add(cursor.CursorId);
+                db.SaveChanges();
+            }
+        }
+
+        public List<Cursor> ReadCursors()
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                List<Cursor> cursors = db.Cursors.ToList();
+                foreach (Cursor cursor in cursors)
+                {
+                    Console.WriteLine(cursor.ToString());
+                }
+                return cursors;
+            }
+
         }
 
     }

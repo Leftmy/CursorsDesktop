@@ -50,5 +50,42 @@ namespace CursorsDesktop.Services
             SystemParametersInfo(SPI_SETCURSORS, 0, IntPtr.Zero, SPIF_SENDCHANGE);
 
         }
+
+        public void AddPackage(string name, string desription, string path)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Packages.Add(
+                    new Package()
+                    {
+                        PackageName = name,
+                        PackageDescription = desription,
+                        PackagePath = path
+                    }
+                );
+                db.SaveChanges();
+            }
+        }
+
+        public List<Package> ReadPackages()
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                List<Package> packages = db.Packages.ToList();
+                foreach (Package package in packages)
+                {
+                    Console.WriteLine(package.ToString());
+                }
+                return packages;
+            }
+
+        }
+
+        public void ApplyPackage(Package package)
+        {
+            PackageService packageService = new PackageService();
+            packageService.setPackage(package);
+        }
     }
+
 }
