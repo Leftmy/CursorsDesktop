@@ -15,6 +15,6 @@ namespace CursorsDesktop.Entities
         public int id {  get; set; }
         public string type { get; set; } = null;
 
-        public ICollection<int> cursorIds { get; set; } = new List<int>();
+        public ICollection<int> CursorIds { get; set; } = new List<int>();
     }
 }

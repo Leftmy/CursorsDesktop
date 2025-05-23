@@ -61,9 +61,9 @@ namespace CursorsDesktop
                 db.Packages.Add(
                     new Package()
                     {
-                        name = name,
-                        description = desription,
-                        path = path
+                        PackageName = name,
+                        PackageDescription = desription,
+                        PackagePath = path
                     }
                 );
                 db.SaveChanges();
@@ -78,12 +78,12 @@ namespace CursorsDesktop
                 Cursor cursor =
                     new Cursor()
                     {
-                        name = name,
+                        CursorName = name,
                         CursorTypeId = cursorTypeId,
                         CursorType = db.CursorTypes.Find(cursorTypeId),
                         PackageId = packageId,
                         Package = db.Packages.Find(packageId),
-                        path = path
+                        CursorPath = path
                     };
                 
                 db.Cursors.Add(
@@ -92,9 +92,9 @@ namespace CursorsDesktop
 
                 db.SaveChanges();
                 CursorType foundType = db.CursorTypes.Find(cursorTypeId);
-                foundType.cursorIds.Add(cursor.id);
+                foundType.CursorIds.Add(cursor.CursorId);
                 Package foundPackage = db.Packages.Find(packageId);
-                foundPackage.cursorIds.Add(cursor.id);
+                foundPackage.CursorIds.Add(cursor.CursorId);
                 db.SaveChanges();
             }
         }
