@@ -10,6 +10,7 @@ using CursorsDesktop.Entities;
 using Cursor = CursorsDesktop.Entities.Cursor;
 using Avalonia.Diagnostics;
 using CursorsDesktop.Data;
+using System.Collections.ObjectModel;
 
 namespace CursorsDesktop.Services
 {
@@ -26,7 +27,7 @@ namespace CursorsDesktop.Services
                
         }
 
-        public void setCursor(int cursorId)
+        public static void setCursor(int cursorId)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
@@ -75,16 +76,14 @@ namespace CursorsDesktop.Services
             }
         }
 
-        public List<Cursor> ReadCursors()
+        public ObservableCollection<Cursor> getCursors()
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 List<Cursor> cursors = db.Cursors.ToList();
-                foreach (Cursor cursor in cursors)
-                {
-                    Console.WriteLine(cursor.ToString());
-                }
-                return cursors;
+                ObservableCollection<Cursor> res = new ObservableCollection<Cursor>(cursors);
+
+                return res;
             }
 
         }

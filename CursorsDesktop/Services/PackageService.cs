@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using CursorsDesktop.Entities;
 using Cursor = CursorsDesktop.Entities.Cursor;
 using CursorsDesktop.Data;
+using Avalonia.Animation;
+using System.Collections.ObjectModel;
 
 
 namespace CursorsDesktop.Services
@@ -67,16 +69,26 @@ namespace CursorsDesktop.Services
             }
         }
 
-        public List<Package> ReadPackages()
+        public ObservableCollection<Package> GetPackages()
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 List<Package> packages = db.Packages.ToList();
-                foreach (Package package in packages)
-                {
-                    Console.WriteLine(package.ToString());
-                }
-                return packages;
+                ObservableCollection<Package> res = new ObservableCollection<Package>(packages);
+
+                return res;
+            }
+
+        }
+
+        public ObservableCollection<Package> GetPackagesPagination(int page = 0, int len = 20)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                List<Package> packages = db.Packages.ToList().Slice(page, page + len);
+                ObservableCollection<Package> res = new ObservableCollection<Package>(packages);
+
+                return res;
             }
 
         }
