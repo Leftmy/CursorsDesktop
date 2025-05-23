@@ -12,12 +12,12 @@ namespace CursorsDesktop.Entities
     public class Package
     {
         [Key]
-        public int id {  get; set; }
-        public string name { get; set; } = null;
-        public string description { get; set; } = null;
-        public string path { get; set; } = null;
+        public int PackageId {  get; set; }
+        public string PackageName { get; set; } = null;
+        public string PackageDescription { get; set; } = null;
+        public string PackagePath { get; set; } = null;
 
-        public ICollection<int> cursorIds{ get; set; } = new List<int>();
+        public ICollection<int> CursorIds{ get; set; } = new List<int>();
 
     }
 }

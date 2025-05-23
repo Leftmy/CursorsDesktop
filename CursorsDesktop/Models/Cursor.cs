@@ -13,7 +13,7 @@ namespace CursorsDesktop.Entities
     public class Cursor
     {
         [Key]
-        public int id { get; set; }
+        public int CursorId { get; set; }
 
         // Зовнішній ключ до CursorType
         public int CursorTypeId { get; set; }
@@ -25,7 +25,7 @@ namespace CursorsDesktop.Entities
         [ForeignKey("PackageId")]
         public Package Package { get; set; }
 
-        public string name { get; set; } = null;
-        public string path { get; set; } = null;
+        public string CursorName { get; set; } = null;
+        public string CursorPath { get; set; } = null;
     }
 }

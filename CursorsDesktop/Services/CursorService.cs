@@ -20,7 +20,7 @@ namespace CursorsDesktop.Services
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 List<int> cursors = new List<int>();
-                cursors = db.Packages.Find(package.id).cursorIds.ToList();
+                cursors = db.Packages.Find(package.PackageId).CursorIds.ToList();
                 return cursors;
             }
                
@@ -30,18 +30,18 @@ namespace CursorsDesktop.Services
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                if (File.Exists(db.Cursors.Find(cursorId).path))
+                if (File.Exists(db.Cursors.Find(cursorId).CursorPath))
                 {
                     using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Control Panel\Cursors", true))
                     {
                         string type = db.CursorTypes.Find(db.Cursors.Find(cursorId).CursorTypeId).type;
-                        string path = db.Cursors.Find(cursorId).path;
+                        string path = db.Cursors.Find(cursorId).CursorPath;
                         key.SetValue(type, path);
                     }
                 }
                 else
                 {
-                    Console.WriteLine($"Файл не знайдено для курсора {db.Cursors.Find(cursorId).name}: {db.Cursors.Find(cursorId).path}");
+                    Console.WriteLine($"Файл не знайдено для курсора {db.Cursors.Find(cursorId).CursorName}: {db.Cursors.Find(cursorId).CursorPath}");
                 }
             }
                 
