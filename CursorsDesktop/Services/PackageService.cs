@@ -78,7 +78,6 @@ namespace CursorsDesktop.Services
 
                 return res;
             }
-
         }
 
         public ObservableCollection<Package> GetPackagesPagination(int page = 0, int len = 20)

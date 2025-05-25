@@ -2,6 +2,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:CursorsDesktop.ViewModels"
+			 x:DataType="vm:BrowsePageViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CursorsDesktop.Views.BrowsePageView">
+	<Design.DataContext>
+        <vm:BrowseViewModel/>
+    </Design.DataContext>
+		<ListBox ItemsSource="{Binding Packages}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Spacing="10" Orientation="Vertical">
+						<TextBlock Text="{Binding PackageName}" />
+					</StackPanel>
+					
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
 </UserControl>

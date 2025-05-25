@@ -26,8 +26,8 @@ namespace CursorsDesktop
             PackageService packageService = new PackageService();
             CursorService cursorService = new CursorService();
             AddCursorType("Arrow");
-            packageService.AddPackage("MaterialBlack", "CursorsDesktop", "C:\\Users\\dariy\\Source\\Repos\\CursorsDesktop\\CursorsDesktop\\Assets\\Cursors\\MaterialBlack");
-            cursorService.AddCursor("MaterialBlack_Arrow", 1, 1, "C:\\Users\\dariy\\Source\\Repos\\CursorsDesktop\\CursorsDesktop\\Assets\\Cursors\\MaterialBlack\\pointer.cur");
+            packageService.AddPackage("MaterialBlack", "CursorsDesktop", "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\");
+            cursorService.AddCursor("MaterialBlack_Arrow", 1, 1, "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\Cursors\\MaterialBlack\\pointer.cur");
 
             Package package = packageService.getPackage("MaterialBlack");
             packageService.setPackage(package);

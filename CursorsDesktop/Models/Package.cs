@@ -13,7 +13,7 @@ namespace CursorsDesktop.Entities
     {
         [Key]
         public int PackageId {  get; set; }
-        public string PackageName { get; set; } = null;
+        public string PackageName { get; set; }
         public string PackageDescription { get; set; } = null;
         public string PackagePath { get; set; } = null;
 
