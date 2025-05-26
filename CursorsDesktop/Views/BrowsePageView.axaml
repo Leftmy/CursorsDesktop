@@ -2,21 +2,81 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			 xmlns:vm="using:CursorsDesktop.ViewModels"
+			 xmlns:vm="clr-namespace:CursorsDesktop.ViewModels"
 			 x:DataType="vm:BrowsePageViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CursorsDesktop.Views.BrowsePageView">
 	<Design.DataContext>
-        <vm:BrowseViewModel/>
+        <vm:BrowsePageViewModel/>
     </Design.DataContext>
-		<ListBox ItemsSource="{Binding Packages}">
+	<Grid RowDefinitions="Auto,*">
+		<StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center"
+					 VerticalAlignment="Center" Margin="10">
+			<TextBox Watermark="Search..." Width="250" Height="32"
+					 Background="White" BorderBrush="Black" Foreground="Black"
+					 CornerRadius="10 0 0 10" >
+				<TextBox.Styles>
+					<Style Selector="TextBox:pointerover /template/ Border">
+						<Setter Property="BorderBrush" Value="Black"/>
+						<Setter Property="CornerRadius" Value="10 0 0 10"/>
+						<Setter Property="Background" Value="White"/>
+					</Style>
+					<Style Selector="TextBox:focus /template/ Border">
+						<Setter Property="BorderBrush" Value="Blue"/>
+						<Setter Property="CornerRadius" Value="10 0 0 10"/>
+						<Setter Property="Background" Value="White"/>
+					</Style>
+				</TextBox.Styles>
+			</TextBox>
+			<Button Background="#ff8624" BorderBrush="Black"
+					CornerRadius="0 10 10 0" Width="50" Height="32">
+				<PathIcon Data="{StaticResource SearchRegular}"/>
+				<Button.Styles>
+					<Style Selector="Button:pointerover /template/ ContentPresenter">
+						<Setter Property="Background" Value="#df7925"/>
+					</Style>
+				</Button.Styles>
+			</Button>
+			
+			
+		</StackPanel>
+
+		<ListBox ItemsSource="{Binding Packages}" Grid.Row="1">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
-					<StackPanel Spacing="10" Orientation="Vertical">
-						<TextBlock Text="{Binding PackageName}" />
+					<StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+						<TextBlock Text="{Binding PackageName}" VerticalAlignment="Center"/>
+						<Button Content="Add"
+								Background="LightGreen"
+								Margin="600 0 0 0"
+								VerticalAlignment="Center"
+								Click="Button_Click">
+							<Button.Styles>
+								<Style Selector="Button:pointerover /template/ ContentPresenter">
+									<Setter Property="Background" Value="#81d481"/>
+									<Setter Property="Foreground" Value="Black"/>
+								</Style>
+							</Button.Styles>
+						</Button>
 					</StackPanel>
-					
 				</DataTemplate>
 			</ListBox.ItemTemplate>
+			<ListBox.Styles>
+				<Style Selector="ListBoxItem:selected Button">
+					<Setter Property="IsVisible" Value="True"/>
+				</Style>
+				<Style Selector="ListBoxItem Button">
+					<Setter Property="IsVisible" Value="False"/>
+				</Style>
+				<Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+					<Setter Property="Foreground" Value="Black"/>
+					<Setter Property="Background" Value="#e4e4e4"/>
+				</Style>
+				<Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+					<Setter Property="Background" Value="#c1c1c1"/>
+				</Style>
+			</ListBox.Styles>
 		</ListBox>
+	</Grid>
+
 </UserControl>
