@@ -140,7 +140,7 @@ namespace CursorsDesktop.Services
             return await client.GetCursorById(id);
         }
 
-        public Cursor getCursorById(int id)
+        public Cursor getBrowseCursorById(int id)
         {
             var cursor = GetCursorByIdAsync(id).GetAwaiter().GetResult();
             return new Cursor()

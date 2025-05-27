@@ -130,17 +130,6 @@ namespace CursorsDesktop.Services
             }
         }
 
-        public void downloadFavourites(User user)
-        {
-            //запит до дб
-        }
-
-        public Package getBrowsePackage(string name)
-        {
-            //запит до дб
-            return new Package();
-        }
-
         public void downloadPackage(int id)
         {
             var packageService = new PackageService();
@@ -192,7 +181,7 @@ namespace CursorsDesktop.Services
             return await client.GetAllPackages();
         }
 
-        public ObservableCollection<Package> getPackages()
+        public ObservableCollection<Package> getBrowsePackages()
         {
             var packageService = new PackageService();
             var remotePackages = packageService.GetAllPackagesAsync().GetAwaiter().GetResult();
@@ -257,18 +246,6 @@ namespace CursorsDesktop.Services
             Console.WriteLine($"Package '{packageName}' added to DB.");
         }
 
-
-        public ObservableCollection<Package> GetBrowsePackages()
-        {
-            // запит до дб
-            return new ObservableCollection<Package> { new Package() };
-        }
-
-        public ObservableCollection<Package> GetBrowsePackagesPagination(int page = 0, int len = 20)
-        {
-            // запит до дб
-            return new ObservableCollection<Package> { new Package() };
-        }
     }
 
 }
