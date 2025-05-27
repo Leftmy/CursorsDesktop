@@ -10,10 +10,20 @@ namespace CursorsDesktop.ViewModels
     {
         private ObservableCollection<Package> _packages;
 
-        [ObservableProperty]
-        private string _filter = "";  
-
         private string _customFilter;
+
+        public ObservableCollection<Package> Packages
+        {
+            get => _packages;
+            set
+            {
+                if (_packages != value)
+                {
+                    _packages = value;
+                    OnPropertyChanged(nameof(Packages));
+                }
+            }
+        }
         public string CustomFilter
         {
             get => _customFilter;
@@ -25,19 +35,6 @@ namespace CursorsDesktop.ViewModels
                     OnPropertyChanged(nameof(CustomFilter));
                     PackageService tmp = new();
                     Packages = tmp.findByName(_customFilter);
-                }
-            }
-        }
-
-        public ObservableCollection<Package> Packages
-        {
-            get => _packages;
-            set
-            {
-                if (_packages != value)
-                {
-                    _packages = value;
-                    OnPropertyChanged(nameof(Packages));
                 }
             }
         }

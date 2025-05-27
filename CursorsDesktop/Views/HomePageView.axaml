@@ -13,9 +13,12 @@
 		<StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center"
 					 VerticalAlignment="Center" Margin="10">
 			<TextBox Watermark="Search..." Width="250" Height="32"
-					 Background="White" BorderBrush="Black" Foreground="Black"
+					 Background="White" 
+					 BorderBrush="Black" 
+					 Foreground="Black"
+					 CaretBrush="Black"
 					 CornerRadius="10 0 0 10"
-					 Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}">
+					 Text="{Binding CustomFilter, UpdateSourceTrigger=PropertyChanged}">
 				<TextBox.Styles>
 					<Style Selector="TextBox:pointerover /template/ Border">
 						<Setter Property="BorderBrush" Value="Black"/>
