@@ -127,7 +127,28 @@ namespace CursorsDesktop.Services
             }
         }
 
+        public void downloadFavourites(User user)
+        {
+            //запит до дб
+        }
 
+        public Package getBrowsePackage(string name)
+        {
+            //запит до дб
+            return new Package();
+        }
+
+        public ObservableCollection<Package> GetBrowsePackages()
+        {
+            // запит до дб
+            return new ObservableCollection<Package> { new Package() };
+        }
+
+        public ObservableCollection<Package> GetBrowsePackagesPagination(int page = 0, int len = 20)
+        {
+            // запит до дб
+            return new ObservableCollection<Package> { new Package() };
+        }
     }
 
 }

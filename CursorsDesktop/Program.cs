@@ -45,7 +45,7 @@ namespace CursorsDesktop
             //AddCursorType("Person");
             //AddCursorType("None");
             //packageService.AddPackage("MaterialBlack2", "CursorsDesktop", "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\");
-            //packageService.AddPackage("MaterialBlack2", "CursorsDesktop", "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\");
+            ////packageService.AddPackage("MaterialBlack2", "CursorsDesktop", "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\");
             //cursorService.AddCursor("MatBlack_Arrow", 1, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
             //cursorService.AddCursor("MatBlack_Arrow", 2, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
             //cursorService.AddCursor("MatBlack_Arrow", 3, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
