@@ -12,8 +12,23 @@ namespace CursorsDesktop.ViewModels
 {
     public class BrowsePageViewModel : ViewModelBase, INotifyPropertyChanged
     {
+        private ObservableCollection<Package> _packages;
+        public ObservableCollection<Package> Packages
+        {
+            get => _packages;
+            set
+            {
+                if (_packages != value)
+                {
+                    _packages = value;
+                    OnPropertyChanged(nameof(Packages));
+                }
+            }
+        }
         public BrowsePageViewModel()
         {
+            PackageService tmp = new PackageService();
+            Packages = tmp.getBrowsePackages();
         }
     }
 

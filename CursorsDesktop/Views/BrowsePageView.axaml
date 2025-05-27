@@ -9,4 +9,31 @@
 	<Design.DataContext>
         <vm:BrowsePageViewModel/>
     </Design.DataContext>
+	<Grid >
+		<ListBox ItemsSource="{Binding Packages}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+						
+						<TextBlock Text="{Binding PackageName}" VerticalAlignment="Center"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+			<ListBox.Styles>
+				<Style Selector="ListBoxItem:selected Button">
+					<Setter Property="IsVisible" Value="True"/>
+				</Style>
+				<Style Selector="ListBoxItem Button">
+					<Setter Property="IsVisible" Value="False"/>
+				</Style>
+				<Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+					<Setter Property="Foreground" Value="Black"/>
+					<Setter Property="Background" Value="#e4e4e4"/>
+				</Style>
+				<Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+					<Setter Property="Background" Value="#c1c1c1"/>
+				</Style>
+			</ListBox.Styles>
+		</ListBox>
+	</Grid>
 </UserControl>
