@@ -120,19 +120,23 @@ namespace CursorsDesktop.Services
             }
         }
 
-        public ICollection<int> getCursorsByPackageId(int id)
+        public async Task<ICollection<int>> GetCursorsByPackageId(int id)
         {
             var packageService = new PackageService();
-            var remotePackage = packageService.GetRemotePackageByIdAsync(id).GetAwaiter().GetResult();
+            var remotePackage = await packageService.GetRemotePackageByIdAsync(id);
 
             var cursors = new List<int>();
-            foreach (var cursor in remotePackage.Cursors)
+            if (remotePackage?.Cursors != null)
             {
-                cursors.Add(cursor.Id);
+                foreach (var cursor in remotePackage.Cursors)
+                {
+                    cursors.Add(cursor.Id);
+                }
             }
-            return new ObservableCollection<int>(cursors);
 
+            return cursors;
         }
+
 
         public async Task<CursorDTO> GetCursorByIdAsync(int id)
         {
@@ -140,18 +144,22 @@ namespace CursorsDesktop.Services
             return await client.GetCursorById(id);
         }
 
-        public Cursor getBrowseCursorById(int id)
+        public async Task<Cursor> GetBrowseCursorById(int id)
         {
-            var cursor = GetCursorByIdAsync(id).GetAwaiter().GetResult();
+            var cursorDto = await GetCursorByIdAsync(id);
+
+            if (cursorDto == null)
+                return null;
+
             return new Cursor()
             {
-                CursorName = cursor.CursorName,
-                CursorPath = cursor.pathToIcon,
-                CursorTypeId = cursor.typeId,
-                CursorId = cursor.Id
+                CursorName = cursorDto.CursorName,
+                CursorPath = cursorDto.pathToIcon,
+                CursorTypeId = cursorDto.typeId,
+                CursorId = cursorDto.Id
             };
-
         }
+
 
 
     }

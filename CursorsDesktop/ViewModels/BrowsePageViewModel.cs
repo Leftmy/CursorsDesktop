@@ -1,5 +1,7 @@
-﻿using CursorsDesktop.Entities;
+﻿using Avalonia.Interactivity;
+using CursorsDesktop.Entities;
 using CursorsDesktop.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,8 +29,13 @@ namespace CursorsDesktop.ViewModels
         }
         public BrowsePageViewModel()
         {
+            getCursors();
+        }
+
+        public async void getCursors()
+        {
             PackageService tmp = new PackageService();
-            Packages = tmp.getBrowsePackages();
+            Packages = await tmp.GetBrowsePackagesAsync();
         }
     }
 

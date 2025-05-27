@@ -181,26 +181,29 @@ namespace CursorsDesktop.Services
             return await client.GetAllPackages();
         }
 
-        public ObservableCollection<Package> getBrowsePackages()
+        public async Task<ObservableCollection<Package>> GetBrowsePackagesAsync()
         {
             var packageService = new PackageService();
-            var remotePackages = packageService.GetAllPackagesAsync().GetAwaiter().GetResult();
+            var remotePackages = await packageService.GetAllPackagesAsync();
             CursorService cursorService = new CursorService();
+
+            ObservableCollection<Package> packages = new ObservableCollection<Package>();
 
             if (remotePackages == null)
             {
                 Console.WriteLine("Package not found.");
-                return new ObservableCollection<Package>();
+                return packages;
             }
-            ObservableCollection<Package> packages = new ObservableCollection<Package>();
+
             foreach (var package in remotePackages)
             {
-
-                packages.Add(new Package(package.Id, package.Name, package.Description, package.pathToIcon, cursorService.getCursorsByPackageId(package.Id)));
+                var cursors = await cursorService.GetCursorsByPackageId(package.Id);
+                packages.Add(new Package(package.Id, package.Name, package.Description, package.pathToIcon, cursors));
             }
+
             return packages;
-            
         }
+
 
 
         public void ImportPackageToDatabase(PackageDTO remotePackage)
