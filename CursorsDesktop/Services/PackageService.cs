@@ -130,10 +130,10 @@ namespace CursorsDesktop.Services
             }
         }
 
-        public void downloadPackage(int id)
+        public async void downloadPackage(int id)
         {
             var packageService = new PackageService();
-            var remotePackage = packageService.GetRemotePackageByIdAsync(id).GetAwaiter().GetResult();
+            var remotePackage = await packageService.GetRemotePackageByIdAsync(id);
 
             if (remotePackage == null)
             {
