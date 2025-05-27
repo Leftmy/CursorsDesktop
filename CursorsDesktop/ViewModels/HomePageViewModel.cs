@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CursorsDesktop.Entities;
 using CursorsDesktop.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 
 namespace CursorsDesktop.ViewModels
 {
@@ -11,6 +13,7 @@ namespace CursorsDesktop.ViewModels
         private ObservableCollection<Package> _packages;
 
         private string _customFilter;
+        private bool _isAscending = true;
 
         public ObservableCollection<Package> Packages
         {
@@ -50,6 +53,23 @@ namespace CursorsDesktop.ViewModels
         {
             PackageService tmp = new PackageService();
             Packages = tmp.GetPackages();
+        }
+        [RelayCommand]
+        public void SortPackages()
+        {
+            PackageService tmp = new PackageService();
+
+            if (_isAscending)
+            {
+
+                Packages = tmp.sortByName(Packages, 1);
+            }
+            else
+            {
+                Packages = tmp.sortByName(Packages, -1);
+            }
+
+            _isAscending = !_isAscending;
         }
     }
 }
