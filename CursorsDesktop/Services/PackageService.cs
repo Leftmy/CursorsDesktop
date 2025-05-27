@@ -24,14 +24,14 @@ namespace CursorsDesktop.Services
 
         public Package getPackage(string name)
         {
-            using(ApplicationDbContext db = new ApplicationDbContext())
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                Package package = db.Packages.Find(1);
-                CursorType cursorType = db.CursorTypes.Find(1);
+                Package package = db.Packages.FirstOrDefault(p => p.PackageName == name);
+
                 return package;
             }
-            
         }
+
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         public static extern bool SystemParametersInfo(uint uiAction, uint uiParam, IntPtr pvParam, uint fWinIni);
