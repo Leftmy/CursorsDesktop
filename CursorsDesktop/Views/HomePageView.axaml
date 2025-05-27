@@ -12,6 +12,20 @@
 	<Grid RowDefinitions="Auto,*">
 		<StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center"
 					 VerticalAlignment="Center" Margin="10">
+			<Button Background="#ff8624" BorderBrush="Black"
+					CornerRadius="10 10 10 10" 
+					Margin="0 0 10 0" Width="40" 
+					Height="32" Click="OnSortButtonClick" Command="{Binding SortPackagesCommand}">
+
+				<Button.Content>
+					<PathIcon Name="SortIcon" Data="{StaticResource SortAscendingRegular}"/>
+				</Button.Content>
+				<Button.Styles>
+					<Style Selector="Button:pointerover /template/ ContentPresenter">
+						<Setter Property="Background" Value="#df7925"/>
+					</Style>
+				</Button.Styles>
+			</Button>
 			<TextBox Watermark="Search..." Width="250" Height="32"
 					 Background="White" 
 					 BorderBrush="Black" 
