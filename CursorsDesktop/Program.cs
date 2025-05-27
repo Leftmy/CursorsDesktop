@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using System;
 using CursorsDesktop.Data;
+using CursorsDesktop.Clients;
 using Microsoft.EntityFrameworkCore;
 using CursorsDesktop.Entities;
 using CursorsDesktop.Services;
@@ -21,10 +22,15 @@ namespace CursorsDesktop
         public static void Main(string[] args)
         {
 
+            PackageService packageService = new PackageService();
+            packageService.getPackages();
+            CursorService cursorService = new CursorService();
+
             BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);
-            PackageService packageService = new PackageService();
-            CursorService cursorService = new CursorService();
+
+            
+
 
             //AddCursorType("Arrow");
             //AddCursorType("Wait");
@@ -81,33 +87,7 @@ namespace CursorsDesktop
                 .LogToTrace();
 
 
-        public static void AddCursorType(string type)
-        {
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                db.CursorTypes.Add(
-                    new CursorType()
-                    {
-                        type = type
-                    }
-                );
-                db.SaveChanges();
-            }
-        }
-
-        public static List<CursorType> ReadCursorTypes()
-        {
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                List<CursorType> cursorTypes = db.CursorTypes.ToList();
-                foreach (CursorType cursorType in cursorTypes)
-                {
-                    Console.WriteLine(cursorType.ToString());
-                }
-                return cursorTypes;
-            }
-
-        }
+        
 
 
 

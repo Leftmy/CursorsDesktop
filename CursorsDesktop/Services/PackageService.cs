@@ -1,15 +1,18 @@
-﻿using Microsoft.Win32;
+﻿using Avalonia.Animation;
+using CursorsDesktop.Clients;
+using CursorsDesktop.Data;
+using CursorsDesktop.DTO;
+using CursorsDesktop.Entities;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using CursorsDesktop.Entities;
 using Cursor = CursorsDesktop.Entities.Cursor;
-using CursorsDesktop.Data;
-using Avalonia.Animation;
-using System.Collections.ObjectModel;
 
 
 namespace CursorsDesktop.Services
@@ -137,6 +140,123 @@ namespace CursorsDesktop.Services
             //запит до дб
             return new Package();
         }
+
+        public void downloadPackage(int id)
+        {
+            var packageService = new PackageService();
+            var remotePackage = packageService.GetRemotePackageByIdAsync(id).GetAwaiter().GetResult();
+
+            if (remotePackage == null)
+            {
+                Console.WriteLine("Package not found.");
+                return;
+            }
+
+            string packageName = remotePackage.Name;
+            string baseFolder = Path.Combine("Assets", "CursorPackages", packageName);
+            Directory.CreateDirectory(baseFolder);
+
+            using var httpClient = new HttpClient();
+
+            foreach (var cursor in remotePackage.Cursors)
+            {
+                string fileName = $"{cursor.CursorName}.cur";
+                string localPath = Path.Combine(baseFolder, fileName);
+
+                try
+                {
+                    var bytes = httpClient.GetByteArrayAsync(cursor.pathToIcon).GetAwaiter().GetResult();
+                    File.WriteAllBytes(localPath, bytes);
+                    cursor.pathToIcon = localPath; // оновлюємо шлях локально для наступного кроку
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to download cursor '{cursor.CursorName}': {ex.Message}");
+                }
+            }
+
+            // Після завантаження курсорів — додати все в БД
+            packageService.ImportPackageToDatabase(remotePackage);
+        }
+
+
+        public async Task<PackageDTO> GetRemotePackageByIdAsync(int packageId)
+        {
+            var client = new PackageClient();
+            return await client.GetPackageByIdAsync(packageId);
+        }
+
+        public async Task<ObservableCollection<PackageDTO>> GetAllPackagesAsync()
+        {
+            var client = new PackageClient();
+            return await client.GetAllPackages();
+        }
+
+        public ObservableCollection<Package> getPackages()
+        {
+            var packageService = new PackageService();
+            var remotePackages = packageService.GetAllPackagesAsync().GetAwaiter().GetResult();
+            CursorService cursorService = new CursorService();
+
+            if (remotePackages == null)
+            {
+                Console.WriteLine("Package not found.");
+                return new ObservableCollection<Package>();
+            }
+            ObservableCollection<Package> packages = new ObservableCollection<Package>();
+            foreach (var package in remotePackages)
+            {
+
+                packages.Add(new Package(package.Id, package.Name, package.Description, package.pathToIcon, cursorService.getCursorsByPackageId(package.Id)));
+            }
+            return packages;
+            
+        }
+
+
+        public void ImportPackageToDatabase(PackageDTO remotePackage)
+        {
+            CursorService cursorService = new CursorService();
+            CursorTypeService cursorTypeService = new CursorTypeService();
+
+            string packageName = remotePackage.Name;
+            string packagePath = Path.Combine("Assets", "CursorPackages", packageName);
+
+            AddPackage(packageName, remotePackage.Description, packagePath);
+            
+            int newPackageId;
+            using (var db = new ApplicationDbContext())
+            {
+                newPackageId = db.Packages.FirstOrDefault(p => p.PackageName == packageName)?.PackageId ?? 0;
+            }
+
+            if (newPackageId == 0)
+            {
+                Console.WriteLine("Package not inserted.");
+                return;
+            }
+
+            foreach (var cursor in remotePackage.Cursors)
+            {
+                int typeId;
+                using (var db = new ApplicationDbContext())
+                {
+                    var existingType = db.CursorTypes.FirstOrDefault(t => t.id == cursor.typeId);
+                    typeId = existingType.id;
+                    
+                    //else
+                    //{
+                    //    cursorTypeService.AddCursorType(cursor.CursorType.Type);
+                    //    typeId = db.CursorTypes.First(t => t.type == cursor.CursorType.Type).id;
+                    //}
+                }
+
+                cursorService.AddCursor(cursor.CursorName, typeId, newPackageId, cursor.pathToIcon);
+            }
+
+            Console.WriteLine($"Package '{packageName}' added to DB.");
+        }
+
 
         public ObservableCollection<Package> GetBrowsePackages()
         {

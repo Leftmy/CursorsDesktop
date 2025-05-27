@@ -21,5 +21,14 @@ namespace CursorsDesktop.Entities
 
         public ICollection<int> CursorIds{ get; set; } = new List<int>();
 
+        public Package(int packageId, string packageName, string packageDescription, string packagePath, ICollection<int> cursorIds)
+        {
+            PackageId = packageId;
+            PackageName = packageName;
+            PackageDescription = packageDescription;
+            PackagePath = packagePath;
+            CursorIds = cursorIds;
+        }
+        public Package() { }
     }
 }

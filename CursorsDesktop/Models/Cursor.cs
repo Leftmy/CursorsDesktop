@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
+using CursorsDesktop.Services;
 
 namespace CursorsDesktop.Entities
 {
@@ -29,5 +30,6 @@ namespace CursorsDesktop.Entities
 
         public string CursorName { get; set; } = null;
         public string CursorPath { get; set; } = null;
+
     }
 }

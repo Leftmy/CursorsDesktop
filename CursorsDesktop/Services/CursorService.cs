@@ -1,16 +1,19 @@
-﻿using Microsoft.Win32;
+﻿using Avalonia.Diagnostics;
+using CursorsDesktop.Clients;
+using CursorsDesktop.Clients;
+using CursorsDesktop.Data;
+using CursorsDesktop.DTO;
+using CursorsDesktop.Entities;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using CursorsDesktop.Entities;
 using Cursor = CursorsDesktop.Entities.Cursor;
-using Avalonia.Diagnostics;
-using CursorsDesktop.Data;
-using System.Collections.ObjectModel;
 
 namespace CursorsDesktop.Services
 {
@@ -116,6 +119,40 @@ namespace CursorsDesktop.Services
                 return new ObservableCollection<Cursor>(cursors);
             }
         }
+
+        public ICollection<int> getCursorsByPackageId(int id)
+        {
+            var packageService = new PackageService();
+            var remotePackage = packageService.GetRemotePackageByIdAsync(id).GetAwaiter().GetResult();
+
+            var cursors = new List<int>();
+            foreach (var cursor in remotePackage.Cursors)
+            {
+                cursors.Add(cursor.Id);
+            }
+            return new ObservableCollection<int>(cursors);
+
+        }
+
+        public async Task<CursorDTO> GetCursorByIdAsync(int id)
+        {
+            var client = new CursorClient();
+            return await client.GetCursorById(id);
+        }
+
+        public Cursor getCursorById(int id)
+        {
+            var cursor = GetCursorByIdAsync(id).GetAwaiter().GetResult();
+            return new Cursor()
+            {
+                CursorName = cursor.CursorName,
+                CursorPath = cursor.pathToIcon,
+                CursorTypeId = cursor.typeId,
+                CursorId = cursor.Id
+            };
+
+        }
+
 
     }
 }
