@@ -64,8 +64,8 @@ namespace CursorsDesktop
             //cursorService.AddCursor("MatBlack_Arrow", 16, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
             //cursorService.AddCursor("MatBlack_Arrow", 17, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
 
-            //packageService.AddPackage("TestPackage", "CursorsDesktop", "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\");
-            //cursorService.AddCursor("Test_Cursor", 1, 2, "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\test\\13502_1.cur");
+            //packageService.AddPackage("BPackage", "CursorsDesktop", "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\test\\");
+            //cursorService.AddCursor("Blink_Cursor", 1, 4, "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\test\\blinkDagger.cur");
 
             //Package package = packageService.getPackage("MaterialBlack2");
             //packageService.setPackage(package);
