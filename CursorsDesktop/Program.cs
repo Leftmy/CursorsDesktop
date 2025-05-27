@@ -28,13 +28,44 @@ namespace CursorsDesktop
 
             //AddCursorType("Arrow");
             //AddCursorType("Wait");
+            //AddCursorType("Help");
+            //AddCursorType("AppStarting");
+            //AddCursorType("Crosshair");
+            //AddCursorType("IBeam");
+            //AddCursorType("NWPen");
+            //AddCursorType("No");
+            //AddCursorType("SizeNS");
+            //AddCursorType("SizeWE");
+            //AddCursorType("SizeNWSE");
+            //AddCursorType("SizeNESW");
+            //AddCursorType("SizeAll");
+            //AddCursorType("UpArrow");
+            //AddCursorType("Hand");
+            //AddCursorType("Pin");
+            //AddCursorType("Person");
+            //AddCursorType("None");
             //packageService.AddPackage("MaterialBlack2", "CursorsDesktop", "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\");
-            ////packageService.AddPackage("MaterialBlack2", "CursorsDesktop", "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\");
-            //cursorService.AddCursor("MatBlack_Arrow", 1, 1, "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
-            //cursorService.AddCursor("MatBlack_Arrow", 2, 1, "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //packageService.AddPackage("MaterialBlack2", "CursorsDesktop", "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\");
+            //cursorService.AddCursor("MatBlack_Arrow", 1, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 2, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 3, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 4, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 5, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 6, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 7, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 8, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 9, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 10, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 11, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 12, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 13, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 14, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 15, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 16, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 17, 1, "C:\\Users\\dariy\\source\\repos\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
 
-            Package package = packageService.getPackage("MaterialBlack2");
-            packageService.setPackage(package);
+            //Package package = packageService.getPackage("MaterialBlack2");
+            //packageService.setPackage(package);
 
 
         }
