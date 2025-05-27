@@ -14,15 +14,5 @@ public partial class BrowsePageView : UserControl
     {
         InitializeComponent();
     }
-    private void Button_Click(object? sender, RoutedEventArgs e)
-    {
-        var button = sender as Button;
-        var package = button?.DataContext as Package;
-        //button.Content = package.PackagePath;
-
-        PackageService packageService = new PackageService();
-        Package apackage = packageService.getPackage(package.PackageName);
-
-        packageService.setPackage(apackage);
-    }
+    
 }

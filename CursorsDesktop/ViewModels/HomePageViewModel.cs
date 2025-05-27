@@ -1,12 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CursorsDesktop.Entities;
+using CursorsDesktop.Services;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace CursorsDesktop.ViewModels
 {
-    internal class HomePageViewModel : ViewModelBase
+    internal partial class HomePageViewModel : ViewModelBase, INotifyPropertyChanged
     {
+        private ObservableCollection<Package> _packages;
+
+        [ObservableProperty]
+        private string _filter = "";  
+
+        private string _customFilter;
+        public string CustomFilter
+        {
+            get => _customFilter;
+            set
+            {
+                if (_customFilter != value)
+                {
+                    _customFilter = value;
+                    OnPropertyChanged(nameof(CustomFilter));
+                    PackageService tmp = new();
+                    Packages = tmp.findByName(_customFilter);
+                }
+            }
+        }
+
+        public ObservableCollection<Package> Packages
+        {
+            get => _packages;
+            set
+            {
+                if (_packages != value)
+                {
+                    _packages = value;
+                    OnPropertyChanged(nameof(Packages));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public HomePageViewModel()
+        {
+            PackageService tmp = new PackageService();
+            Packages = tmp.GetPackages();
+        }
     }
 }
