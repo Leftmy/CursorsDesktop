@@ -14,7 +14,7 @@
     </Design.DataContext>
 
 	<SplitView IsPaneOpen="{Binding IsPaneOpen}"
-			   OpenPaneLength="150"
+			   OpenPaneLength="175"
 			   DisplayMode="CompactInline"
 			   CompactPaneLength="52"
 			   PaneBackground="#ff8624"
@@ -23,7 +23,8 @@
 			<StackPanel
 				Spacing="5"
 				Margin="5 20 5 0">
-				<TextBlock FontFamily="{StaticResource InterBold}">Senior Cursor</TextBlock>
+				<Image Source="avares://CursorsDesktop/Assets/applogo.png"
+					   RenderOptions.BitmapInterpolationMode="HighQuality"/>
 				<ListBox
 						Background="White"
 						ItemsSource="{Binding Items}"

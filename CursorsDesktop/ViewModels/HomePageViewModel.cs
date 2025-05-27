@@ -13,7 +13,7 @@ namespace CursorsDesktop.ViewModels
         private ObservableCollection<Package> _packages;
 
         private string _customFilter;
-        private bool _isAscending = true;
+        private bool _isAscending = false;
 
         public ObservableCollection<Package> Packages
         {
@@ -52,7 +52,7 @@ namespace CursorsDesktop.ViewModels
         public HomePageViewModel()
         {
             PackageService tmp = new PackageService();
-            Packages = tmp.GetPackages();
+            Packages = tmp.sortByName(tmp.GetPackages(),1);
         }
         [RelayCommand]
         public void SortPackages()
