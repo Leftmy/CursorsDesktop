@@ -23,7 +23,6 @@ namespace CursorsDesktop
         {
 
             PackageService packageService = new PackageService();
-            packageService.getPackages();
             CursorService cursorService = new CursorService();
 
             BuildAvaloniaApp()
