@@ -97,6 +97,37 @@ namespace CursorsDesktop.Services
             PackageService packageService = new PackageService();
             packageService.setPackage(package);
         }
+
+        public ObservableCollection<Package> sortByName(ObservableCollection<Package> packages, int mode)
+        {
+            if (mode == 1)
+            {
+                // Сортування по зростанню
+                var sorted = packages.OrderBy(p => p.PackageName);
+                return new ObservableCollection<Package>(sorted);
+            }
+            else if (mode == -1)
+            {
+                // Сортування по спаданню
+                var sorted = packages.OrderByDescending(p => p.PackageName);
+                return new ObservableCollection<Package>(sorted);
+            }
+            return packages;
+        }
+
+        public ObservableCollection<Package> findByName(string name)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var packages = db.Packages
+                    .Where(p => p.PackageName.Contains(name))
+                    .ToList();
+
+                return new ObservableCollection<Package>(packages);
+            }
+        }
+
+
     }
 
 }

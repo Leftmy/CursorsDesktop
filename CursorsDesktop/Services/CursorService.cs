@@ -88,5 +88,34 @@ namespace CursorsDesktop.Services
 
         }
 
+        public ObservableCollection<Cursor> sortByName(ObservableCollection<Cursor> cursors, int mode)
+        {
+            if (mode == 1)
+            {
+                // Сортування по зростанню
+                var sorted = cursors.OrderBy(c => c.CursorName);
+                return new ObservableCollection<Cursor>(sorted);
+            }
+            else if (mode == -1)
+            {
+                // Сортування по спаданню
+                var sorted = cursors.OrderByDescending(c => c.CursorName);
+                return new ObservableCollection<Cursor>(sorted);
+            }
+            return cursors;
+        }
+
+        public ObservableCollection<Cursor> findByName(string name)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var cursors = db.Cursors
+                    .Where(c => c.CursorName.Contains(name))
+                    .ToList();
+
+                return new ObservableCollection<Cursor>(cursors);
+            }
+        }
+
     }
 }
