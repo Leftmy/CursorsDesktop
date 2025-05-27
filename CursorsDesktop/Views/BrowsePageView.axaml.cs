@@ -14,5 +14,15 @@ public partial class BrowsePageView : UserControl
     {
         InitializeComponent();
     }
-    
+    private void Download_Click(object? sender, RoutedEventArgs e)
+    {
+        var button = sender as Button;
+        var package = button?.DataContext as Package;
+
+        if (package != null)
+        {
+            PackageService tmp = new();
+            tmp.downloadPackage(package.PackageId);
+        }
+    }
 }

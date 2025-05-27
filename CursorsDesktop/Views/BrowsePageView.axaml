@@ -14,8 +14,20 @@
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
-						
+						<Image Source="{Binding PackagePath}"/>
 						<TextBlock Text="{Binding PackageName}" VerticalAlignment="Center"/>
+						<Button Content="Add"
+								Background="LightGreen"
+								Margin="600 0 0 0"
+								VerticalAlignment="Center"
+								Click="Download_Click">
+							<Button.Styles>
+								<Style Selector="Button:pointerover /template/ ContentPresenter">
+									<Setter Property="Background" Value="#81d481"/>
+									<Setter Property="Foreground" Value="Black"/>
+								</Style>
+							</Button.Styles>
+						</Button>
 					</StackPanel>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
