@@ -24,12 +24,14 @@ namespace CursorsDesktop
             BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);
             PackageService packageService = new PackageService();
-            //CursorService cursorService = new CursorService();
+            CursorService cursorService = new CursorService();
 
             //AddCursorType("Arrow");
+            //AddCursorType("Wait");
             //packageService.AddPackage("MaterialBlack2", "CursorsDesktop", "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\");
-            //cursorService.AddCursor("MatBlack_Arrow2", 1, 2, "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
-            //cursorService.AddCursor("MatBlack_Arrow1", 1, 1, "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            ////packageService.AddPackage("MaterialBlack2", "CursorsDesktop", "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\");
+            //cursorService.AddCursor("MatBlack_Arrow", 1, 1, "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
+            //cursorService.AddCursor("MatBlack_Arrow", 2, 1, "C:\\Users\\5\\Desktop\\CursorsDesktop\\CursorsDesktop\\Assets\\CursorPackages\\MaterialBlack\\pointer.cur");
 
             Package package = packageService.getPackage("MaterialBlack2");
             packageService.setPackage(package);

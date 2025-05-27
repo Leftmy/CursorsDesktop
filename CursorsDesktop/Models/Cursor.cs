@@ -7,9 +7,11 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace CursorsDesktop.Entities
 {
+    [Index(nameof(CursorName), nameof(CursorTypeId), nameof(PackageId), IsUnique = true)]
     public class Cursor
     {
         [Key]
