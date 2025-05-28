@@ -9,8 +9,54 @@
 	<Design.DataContext>
         <vm:BrowsePageViewModel/>
     </Design.DataContext>
-	<Grid >
-		<ListBox ItemsSource="{Binding Packages}">
+		<Grid RowDefinitions="Auto,*">
+			<StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center"
+						 VerticalAlignment="Center" Margin="10">
+				<Button Background="#ff8624" BorderBrush="Black"
+						CornerRadius="10 10 10 10"
+						Margin="0 0 10 0" Width="40"
+						Height="32" Click="OnSortButtonClick" Command="{Binding SortPackagesCommand}">
+
+					<Button.Content>
+						<PathIcon Name="SortIcon" Data="{StaticResource SortAscendingRegular}"/>
+					</Button.Content>
+					<Button.Styles>
+						<Style Selector="Button:pointerover /template/ ContentPresenter">
+							<Setter Property="Background" Value="#df7925"/>
+						</Style>
+					</Button.Styles>
+				</Button>
+				<TextBox Watermark="Search..." Width="250" Height="32"
+						 Background="White"
+						 BorderBrush="Black"
+						 Foreground="Black"
+						 CaretBrush="Black"
+						 CornerRadius="10 0 0 10"
+						 Text="{Binding CustomFilter, UpdateSourceTrigger=PropertyChanged}">
+					<TextBox.Styles>
+						<Style Selector="TextBox:pointerover /template/ Border">
+							<Setter Property="BorderBrush" Value="Black"/>
+							<Setter Property="CornerRadius" Value="10 0 0 10"/>
+							<Setter Property="Background" Value="White"/>
+						</Style>
+						<Style Selector="TextBox:focus /template/ Border">
+							<Setter Property="BorderBrush" Value="Blue"/>
+							<Setter Property="CornerRadius" Value="10 0 0 10"/>
+							<Setter Property="Background" Value="White"/>
+						</Style>
+					</TextBox.Styles>
+				</TextBox>
+				<Button Background="#ff8624" BorderBrush="Black"
+						CornerRadius="0 10 10 0" Width="50" Height="32">
+					<PathIcon Data="{StaticResource SearchRegular}"/>
+					<Button.Styles>
+						<Style Selector="Button:pointerover /template/ ContentPresenter">
+							<Setter Property="Background" Value="#df7925"/>
+						</Style>
+					</Button.Styles>
+				</Button>
+			</StackPanel>
+		<ListBox ItemsSource="{Binding Packages}" Grid.Row="1">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
