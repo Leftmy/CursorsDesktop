@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace CursorsDesktop.Migrations
 {
     /// <inheritdoc />
@@ -70,42 +68,6 @@ namespace CursorsDesktop.Migrations
                         principalTable: "Packages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "CursorTypes",
-                columns: new[] { "Id", "Name", "SystemRole" },
-                values: new object[,]
-                {
-                    { 1, "Default Pointer", "Arrow" },
-                    { 2, "Help", "Help" },
-                    { 3, "Working in Background", "AppStarting" },
-                    { 4, "Busy", "Wait" },
-                    { 5, "Precision Select", "Crosshair" },
-                    { 6, "Text Selection", "IBeam" },
-                    { 7, "Handwriting", "NWPen" },
-                    { 8, "Not Allowed", "No" },
-                    { 9, "Resize Vertical", "SizeNS" },
-                    { 10, "Resize Horizontal", "SizeWE" },
-                    { 11, "Diagonal Resize 1", "SizeNWSE" },
-                    { 12, "Diagonal Resize 2", "SizeNESW" },
-                    { 13, "Move", "SizeAll" },
-                    { 14, "Alternate Select", "UpArrow" },
-                    { 15, "Link Select", "Hand" },
-                    { 16, "Location Select", "Pin" },
-                    { 17, "Person Select", "Person" },
-                    { 18, "Auto-scroll (All Directions)", "PanAll" },
-                    { 19, "Auto-scroll (North-South)", "PanNS" },
-                    { 20, "Auto-scroll (West-East)", "PanWE" },
-                    { 21, "Auto-scroll (North)", "PanN" },
-                    { 22, "Auto-scroll (South)", "PanS" },
-                    { 23, "Auto-scroll (West)", "PanW" },
-                    { 24, "Auto-scroll (East)", "PanE" },
-                    { 25, "Auto-scroll (North West)", "PanNW" },
-                    { 26, "Auto-scroll (North East)", "PanNE" },
-                    { 27, "Auto-scroll (South West)", "PanSW" },
-                    { 28, "Auto-scroll (South East)", "PanSE" },
-                    { 29, "CD Auto-run", "CD" }
                 });
 
             migrationBuilder.CreateIndex(
