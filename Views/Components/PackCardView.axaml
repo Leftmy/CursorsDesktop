@@ -1,0 +1,65 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:asyncImage="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:packs="using:CursorsDesktop.DTO.Packs" 
+             x:Class="CursorsDesktop.Views.Components.PackCardView"
+             x:DataType="packs:PackagesGetAllResponse"
+             Width="240" Height="320" 
+             Margin="0,0,20,20" 
+             ClipToBounds="False">
+
+    <Border BorderBrush="{DynamicResource TextBrush}"
+            BorderThickness="3"
+            Background="White"
+            BoxShadow="6 6 0 0 Black">
+
+        <Grid RowDefinitions="*, Auto, Auto" Margin="15">
+            <Border Grid.Row="0"
+                    BorderBrush="Black"
+                    BorderThickness="2"
+                    Background="{DynamicResource BackgroundBrush}"
+                    Margin="0,0,0,15">
+                <Grid>
+                    <TextBlock Classes="icon" Text="&#xf03e;"
+                               FontSize="48"
+                               Foreground="Gray"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+
+                    <Border Grid.Row="0"
+                            BorderBrush="Black"
+                            BorderThickness="2"
+                            Background="{DynamicResource BackgroundBrush}"
+                            Margin="0,0,0,15">
+                        <Image asyncImage:ImageLoader.Source="{Binding PathToIcon}"
+                               Stretch="Uniform"
+                               Margin="5"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <StackPanel Grid.Row="1" Margin="0,0,0,15">
+                <TextBlock Text="{Binding Name}"
+                           FontWeight="Black"
+                           FontSize="20"
+                           TextTrimming="CharacterEllipsis"/>
+
+                <TextBlock Text="{Binding Description}"
+                           Foreground="Gray"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           TextWrapping="Wrap"
+                           MaxLines="2"
+                           TextTrimming="CharacterEllipsis"/>
+            </StackPanel>
+
+            <Button Grid.Row="2" Classes="brutal" HorizontalAlignment="Stretch" Background="#00FF66">
+                <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                    <TextBlock Classes="icon" Text="&#xf06e;" VerticalAlignment="Center"/>
+                    <TextBlock Text="DETAILS" FontWeight="Black" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+        </Grid>
+    </Border>
+</UserControl>

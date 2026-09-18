@@ -11,6 +11,7 @@ using CursorsDesktop.Data;
 using CursorsDesktop.Services;
 using CursorsDesktop.ViewModels;
 using CursorsDesktop.Views;
+using CursorsDesktop.Views.Pages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -37,8 +38,14 @@ public partial class App : Application
         services.AddTransient<ICursorTypesService, CursorTypesService>();
         
         services.AddTransient<MainViewModel>();
+        services.AddTransient<HomePageViewModel>();
+        services.AddTransient<PackDetailsPageView>();
 
         services.AddHttpClient<ICursorTypesClient, CursorTypesClient>( client =>
+        {
+            client.BaseAddress = new Uri(AppConstants.ApiBaseUrl);
+        });
+        services.AddHttpClient<IPackageClient, PackagesClient>(client  =>
         {
             client.BaseAddress = new Uri(AppConstants.ApiBaseUrl);
         });

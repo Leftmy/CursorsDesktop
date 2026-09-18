@@ -3,14 +3,9 @@ using CursorsDesktop.Abstractions.Services;
 
 namespace CursorsDesktop.ViewModels;
 
-public partial class MainViewModel : ViewModelBase
+public partial class MainViewModel(IPackagesService packageService) : ViewModelBase
 {
-    private readonly IPackagesService _packageService;
+    private readonly IPackagesService _packageService = packageService;
     [ObservableProperty]
     private string _greeting = "Welcome to Avalonia!";
-
-    public MainViewModel(IPackagesService packageService)
-    {
-        _packageService = packageService;
-    }
 }
