@@ -1,0 +1,62 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="30" Background="White">
+            <StackPanel Spacing="15">
+                <Button Content="Default Button" Classes="brutal" />
+                <Button Content="Active Button" Classes="brutal active" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="Button">
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Button.brutal">
+        <Setter Property="Background" Value="#FFD000"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="FontWeight" Value="UltraBold"/>
+        <Setter Property="ClipToBounds" Value="False"/>
+    </Style>
+
+    <Style Selector="Button.brutal /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="BoxShadow" Value="4 4 0 0 Black"/>
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="0:0:0.15" />
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.05" />
+            </Transitions>
+        </Setter>
+    </Style>
+
+    <Style Selector="Button.brutal:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#FFEDD5"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="BoxShadow" Value="4 4 0 0 Black"/>
+    </Style>
+
+    <Style Selector="Button.brutal:pointerover">
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+
+    <Style Selector="Button.brutal:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="RenderTransform" Value="translate(4px, 4px)"/>
+        <Setter Property="BoxShadow" Value="0 0 0 0 Black"/>
+    </Style>
+
+    <Style Selector="Button.brutal.active /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="Black"/>
+        <Setter Property="BoxShadow" Value="0 0 0 0 Black"/> 
+        <Setter Property="Margin" Value="4,4,0,0"/> 
+    </Style>
+
+    <Style Selector="Button.brutal.active">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+</Styles>

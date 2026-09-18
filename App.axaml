@@ -3,13 +3,35 @@
              x:Class="CursorsDesktop.App"
              xmlns:local="using:CursorsDesktop"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
-    <Application.DataTemplates>
-        <local:ViewLocator />
-    </Application.DataTemplates>
+    <Application.Resources>
+        <FontFamily x:Key="MainFont">avares://CursorsDesktop/Assets/Fonts/SpaceGrotesk#Space Grotesk</FontFamily>
+        <FontFamily x:Key="IconFont">avares://CursorsDesktop/Assets/Fonts/ArimoNerd#Arimo Nerd Font</FontFamily>
+
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#FE8624"/>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="#F4F4F0"/>
+        <SolidColorBrush x:Key="TextBrush" Color="#000000"/>
+    </Application.Resources>
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://CursorsDesktop/Styles/ButtonStyles.axaml"/>
+
+        <Style Selector="Window">
+            <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+            <Setter Property="FontFamily" Value="{StaticResource MainFont}"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+        </Style>
+
+        <Style Selector="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource MainFont}"/>
+        </Style>
+
+        <Style Selector="TextBlock.icon">
+            <Setter Property="FontFamily" Value="{StaticResource IconFont}"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
     </Application.Styles>
 </Application>

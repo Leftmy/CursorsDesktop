@@ -1,0 +1,48 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="CursorsDesktop.Views.Components.SideBarView"
+    Background="{DynamicResource PrimaryBrush}">
+    <Grid RowDefinitions="Auto, *, Auto"
+          RowSpacing="15"
+          Margin="12"
+          >
+        <Image Grid.Row="0"
+               Source="/Assets/Images/senior-cursor-logo.png"
+               Margin="0,0,0,20">
+        </Image>
+        <StackPanel Grid.Row="1" Spacing="15">
+            <Button Classes="brutal active" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal" Spacing="15" VerticalAlignment="Center">
+                    <TextBlock Classes="icon" Text="&#xf02dc;"/>
+                    <TextBlock Text="HOME"/>
+                </StackPanel>
+            </Button>
+            <Button Classes="brutal" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal" Spacing="15" VerticalAlignment="Center">
+                    <TextBlock Classes="icon" Text="&#xf03d4;"/>
+                    <TextBlock Text="MY PACKS"/>
+                </StackPanel>
+            </Button>
+            <Button Classes="brutal" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal" Spacing="15" VerticalAlignment="Center">
+                    <TextBlock Classes="icon" Text="&#xf013;"/>
+                    <TextBlock Text="SETTINGS"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <Button Grid.Row="2" Classes="brutal" HorizontalAlignment="Stretch" Background="#FFFFFF" IsVisible="True">
+            <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Center">
+                <TextBlock Classes="icon" Text="&#xf090;" VerticalAlignment="Center"/>
+                <TextBlock Text="LOGIN" FontWeight="Black" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="2" Classes="brutal" HorizontalAlignment="Stretch" Background="#FF4444" IsVisible="False">
+            <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Center">
+                <TextBlock Classes="icon" Text="&#xf05fd;" VerticalAlignment="Center"/>
+                <TextBlock Text="LOGOUT" FontWeight="Black" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

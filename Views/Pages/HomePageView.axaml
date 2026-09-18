@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="CursorsDesktop.Views.Pages.HomePageView">
+    
+    <Grid RowDefinitions="Auto, *">
+        <Border Grid.Row="0" 
+                BorderBrush="{DynamicResource TextBrush}" 
+                BorderThickness="0,0,0,3"
+                Padding="30">
+            <TextBlock Text="ALL CURSORS" 
+                       FontWeight="Black" 
+                       FontSize="32" />
+        </Border>
+        
+        <ScrollViewer Grid.Row="1" Padding="30">
+            <TextBlock Text="Тут буде сітка з твоїми паками..." 
+                       Foreground="Gray" 
+                       FontSize="18"/>
+        </ScrollViewer>
+    </Grid>
+
+</UserControl>

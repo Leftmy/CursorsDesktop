@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:components="using:CursorsDesktop.Views.Components"
+             xmlns:pages="using:CursorsDesktop.Views.Pages"
+             x:Class="CursorsDesktop.Views.MainView"
+             >
+    <Grid ColumnDefinitions="250, *">
+        <Border Grid.Column="0"
+                BorderBrush="{DynamicResource TextBrush}"
+                BorderThickness="0,0,3,0">
+            <components:SideBarView />
+        </Border>
+        <pages:HomePageView Grid.Column="1" />
+    </Grid>
+</UserControl>
