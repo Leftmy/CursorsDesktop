@@ -1,8 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:components="using:CursorsDesktop.Views.Components"
-             xmlns:pages="using:CursorsDesktop.Views.Pages"
+             xmlns:vm="using:CursorsDesktop.ViewModels"
              x:Class="CursorsDesktop.Views.MainView"
+             x:DataType="vm:MainViewModel"
              >
     <Grid ColumnDefinitions="250, *">
         <Border Grid.Column="0"
@@ -10,6 +11,10 @@
                 BorderThickness="0,0,3,0">
             <components:SideBarView />
         </Border>
-        <pages:HomePageView Grid.Column="1" />
+        <TransitioningContentControl Grid.Column="1" Content="{Binding CurrentPage}">
+            <TransitioningContentControl.PageTransition>
+                <CrossFade Duration="0:00:00.2" />
+            </TransitioningContentControl.PageTransition>
+        </TransitioningContentControl>
     </Grid>
 </UserControl>

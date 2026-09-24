@@ -5,6 +5,10 @@
              RequestedThemeVariant="Default">
     <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
     <Application.Resources>
         <FontFamily x:Key="MainFont">avares://CursorsDesktop/Assets/Fonts/SpaceGrotesk#Space Grotesk</FontFamily>
         <FontFamily x:Key="IconFont">avares://CursorsDesktop/Assets/Fonts/ArimoNerd#Arimo Nerd Font</FontFamily>

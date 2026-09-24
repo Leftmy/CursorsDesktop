@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading;
@@ -15,10 +17,23 @@ public class PackagesClient(HttpClient httpClient) : IPackageClient
 
     public async Task<IReadOnlyList<PackagesGetAllResponse>> GetAllAsync()
     {
-        var data = await _httpClient.GetFromJsonAsync<IReadOnlyList<PackagesGetAllResponse>>(
-            Endpoint + "/all", CancellationToken.None
-        );
+        try
+        {
+            var data = await _httpClient.GetFromJsonAsync<IReadOnlyList<PackagesGetAllResponse>>(
+                Endpoint + "/all", CancellationToken.None
+            );
 
-        return data ?? [];
+            return data ?? [];
+        }
+        catch (HttpRequestException ex)
+        {
+            Debug.WriteLine($"HTTP Error fetching packages: {ex.Message}");
+            return [];
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Unknown error fetching packages:  {ex.Message}");
+            return [];
+        }
     }
 }

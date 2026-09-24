@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using CursorsDesktop.ViewModels;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace CursorsDesktop;
 
@@ -18,9 +18,19 @@ public class ViewLocator : IDataTemplate
     {
         if (param is null)
             return null;
-        
+
+        var viewModelName = param.GetType().FullName!;
         var name = param.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
         var type = Type.GetType(name);
+
+        if (type == null)
+        {
+            var pageViewName = viewModelName
+                .Replace(".ViewModels.", ".Views.Pages.")
+                .Replace("ViewModel", "View", StringComparison.Ordinal);
+                
+            type = Type.GetType(pageViewName);
+        }
 
         if (type != null)
         {
@@ -32,6 +42,6 @@ public class ViewLocator : IDataTemplate
 
     public bool Match(object? data)
     {
-        return data is ViewModelBase;
+        return data is ObservableObject;
     }
 }

@@ -10,7 +10,7 @@
 
     <Border BorderBrush="{DynamicResource TextBrush}"
             BorderThickness="3"
-            Background="White"
+            Background="#ffedd5"
             BoxShadow="6 6 0 0 Black">
 
         <Grid RowDefinitions="*, Auto, Auto" Margin="15">
@@ -53,7 +53,7 @@
                            TextTrimming="CharacterEllipsis"/>
             </StackPanel>
 
-            <Button Grid.Row="2" Classes="brutal" HorizontalAlignment="Stretch" Background="#00FF66">
+            <Button Grid.Row="2" Classes="brutal" HorizontalAlignment="Stretch" Background="#FFF176">
                 <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
                     <TextBlock Classes="icon" Text="&#xf06e;" VerticalAlignment="Center"/>
                     <TextBlock Text="DETAILS" FontWeight="Black" VerticalAlignment="Center"/>
